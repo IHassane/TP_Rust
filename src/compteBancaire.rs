@@ -34,7 +34,7 @@ impl CompteBancaire {
         )
     }
 
-    fn renommer(self, nouveau_nom: String) -> CompteBancaire {
+    fn renommer(&self, nouveau_nom: String) -> CompteBancaire {
         CompteBancaire {
             nom: nouveau_nom,
             solde: self.solde,
@@ -73,7 +73,14 @@ pub fn main() {
         },
     ];
 
-    let options = ["Afficher solde", "Retrait", "Dépôt", "Quitter","Supprimer"];
+    let options = [
+        "Afficher solde",
+        "Retrait",
+        "Dépôt",
+        "Quitter",
+        "Renommer",
+        "Supprimer",
+    ];
 
     loop {
         println!("Veuillez selctionner un compte:");
@@ -150,8 +157,12 @@ pub fn main() {
                     break;
                 }
                 5 => {
+                    compte.renommer("nouveau_nom".to_string());
+                    println!("Nom du compte modifié !");
+                }
+                6 => {
                     let compte = comptes.remove(compte_numero);
-                    println!("Suppression du compte {} !!!", compte.nom);
+                    println!("Suppression du compte {} !", compte.nom);
                     compte.fermer();
                     break;
                 }
