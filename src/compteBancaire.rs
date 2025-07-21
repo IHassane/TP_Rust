@@ -54,7 +54,7 @@ pub fn main() {
     let options = ["Afficher solde", "Retrait", "Dépôt", "Quitter"];
 
     loop {
-        println!("\n📋 Menu :");
+        println!("Menu :");
         for (i, option) in options.iter().enumerate() {
             println!("{}. {}", i + 1, option);
         }
@@ -83,8 +83,12 @@ pub fn main() {
             3 => {
                 println!("Montant à déposer :");
                 let montant = lire_entree_en_float();
-                if montant > 0.0 {
+                if montant > 10.0 {
                     compte.deposer(montant);
+                }
+                else
+                {
+                    println!("Le montant minimum pour un dépôt et de 10 euros")
                 }
             }
             4 => {
