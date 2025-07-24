@@ -6,20 +6,20 @@ use std::sync::Arc;
 use tokio::sync::Mutex;
 use std::io;
 
-pub async fn journalisation() -> Result<(), Box<dyn std::error::Error>> {
-    let fichier_log = creer_fichier_log().await?;
+pub async fn journalisation() -> Result<(), io::Error> {
+    let fichier_log = ouvrir_fichier_log().await?;
     
     // Étape 2: Démarrer le serveur TCP
     println!("Démarrage du serveur...");
     let listener = demarrer_serveur().await?;
     
-    // Étape 3: Boucle principale pour accepter les clients
-    println!("Serveur prêt ! En attente de clients...");
+    // Étape 3: Boucle principale pour les clients
+    println!("Serveur prêt ! En attente de clients");
     boucle_principale_serveur(listener, fichier_log).await
 }
 
-// Fonction pour créer et configurer le fichier de log
-async fn creer_fichier_log() -> Result<Arc<Mutex<tokio::fs::File>>, io::Error> {
+// Fonction pour configurer le fichier de log
+async fn ouvrir_fichier_log() -> Result<Arc<Mutex<tokio::fs::File>>, io::Error> {
     println!("Ouverture du fichier logs/server.log");
     
     let fichier = OpenOptions::new()  
@@ -45,7 +45,7 @@ async fn demarrer_serveur() -> Result<TcpListener, io::Error> {
 async fn boucle_principale_serveur(
     listener: TcpListener, 
     fichier_log: Arc<Mutex<tokio::fs::File>>
-) -> Result<(), Box<dyn std::error::Error>> {
+) -> Result<(), io::Error> {
     
     loop {
         println!("\nEn attente d'une nouvelle connexion...");
@@ -68,7 +68,7 @@ async fn boucle_principale_serveur(
                     // Gérer les erreurs
                     match resultat {
                         Ok(_) => {
-                            println!("Client {} déconnecté proprement", adresse_client);
+                            println!("Client {} déconnecté", adresse_client);
                         }
                         Err(erreur) => {
                             println!("Erreur avec le client {} : {:?}", adresse_client, erreur);
@@ -110,7 +110,7 @@ async fn traiter_messages_client(
     Ok(())
 }
 
-// Fonction pour traiter une ligne de message spécifique
+// Fonction pour traiter une ligne de message
 async fn traiter_une_ligne(
     message: String, 
     fichier_log: &Arc<Mutex<tokio::fs::File>>

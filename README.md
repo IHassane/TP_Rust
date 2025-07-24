@@ -94,3 +94,33 @@ Dans les méthodes de gestion de fichiers qu’on a mises en place (lire, écrir
     Boucles et contrôle de flux : dans modifier_fichier, on utilise une boucle pour parcourir chaque ligne, demander à l'utilisateur s'il veut la changer, et on construit un nouveau contenu.
 
     Chemin dynamique : on a demandé le nom du fichier à l’utilisateur et ajouté .txt dynamiquement avec format!, ce qui montre l’usage de String.
+
+10. Serveur de journalisation asynchrone
+
+Projet final : implémentation d’un serveur TCP asynchrone permettant de recevoir des messages clients et de les écrire dans un fichier logs/server.log, avec un timestamp.
+ Concepts appliqués :
+
+    tokio pour la gestion asynchrone et la concurrence non bloquante.
+
+    TcpListener et TcpStream pour l'écoute réseau.
+
+    Tâches concurrentes : un client = une tâche (tokio::spawn).
+
+    Arc<Mutex<>> : permet un accès concurrent sécurisé au fichier de log.
+
+    Écriture sécurisée dans un fichier partagé par plusieurs clients.
+
+    Horodatage avec chrono : chaque message logué contient [YYYY-MM-DD HH:MM:SS].
+
+ Comportement :
+
+    Plusieurs clients peuvent se connecter en parallèle.
+
+    Chaque message reçu est affiché dans le terminal et sauvegardé dans server.log.
+
+    Aucun conflit d'écriture grâce à l’usage de Mutex.
+
+Exemple de log :
+
+[2025-07-24 15:20:37] salut
+[2025-07-24 15:20:41] je suis un message 
