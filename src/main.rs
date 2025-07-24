@@ -8,6 +8,7 @@ mod lire;
 mod tp3;
 mod fichier;
 mod asynchrone;
+mod tp4;
 
 #[tokio::main]
 async fn main() {
@@ -18,6 +19,7 @@ async fn main() {
     //lire :: lire();
     //tp3 :: gestion_fichier();
     //asynchrone :: affichermessage().await;
-    asynchrone :: afficher_messages_en_parallele().await;
-    asynchrone :: afficher_sequentiellement().await;
+    //asynchrone :: afficher_messages_en_parallele().await;
+    //asynchrone :: afficher_sequentiellement().await;
+    tp4 :: journalisation().await;
 }
