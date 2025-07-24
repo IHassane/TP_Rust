@@ -2,14 +2,16 @@ use crate::fichier::Fichier;
 use std::io;
 
 pub fn gestion_fichier() {
-    let fichier = Fichier::new("monfichier.csv");
+    let fichier = Fichier::new("");
 
     loop {
         println!("\n=== Menu ===");
-        println!("1. Lire le fichier");
-        println!("2. Écrire une ligne");
-        println!("3. Supprimer le fichier");
-        println!("4. Quitter");
+        println!("1. Lister le fichier");
+        println!("2. Lire le fichier");
+        println!("3. Créer fichier");
+        println!("4. Modifier fichier");
+        println!("5. Supprimer le fichier");
+        println!("6. Quitter");
 
         print!("Choix : ");
         let mut choix = String::new();
@@ -18,15 +20,12 @@ pub fn gestion_fichier() {
             .expect("Attention erreur de lecture");
 
         match choix.trim() {
-            "1" => fichier.lire(),
-            "2" => {
-                println!("Entrez une ligne CSV (ex: nom,age,ville) :");
-                let mut ligne = String::new();
-                io::stdin().read_line(&mut ligne).unwrap();
-                fichier.ecrire(ligne.trim());
-            }
-            "3" => fichier.supprimer(),
-            "4" => {
+            "1" => fichier.lister_fichier("."),
+            "2" => fichier.lire(),
+            "3" => fichier.creer(),
+            "4" => fichier.modifier_fichier(),
+            "5" => fichier.supprimer(),
+            "6" => {
                 println!("Fin du programme");
                 break;
             }
