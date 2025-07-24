@@ -79,7 +79,7 @@ Ce que j’ai retenu
     L’itération avec .iter() et .enumerate() est pratique pour les collections.
 
 
-9. Gestion de fichiers — principes appliqués
+9. Gestion de fichiers 
 
 Dans les méthodes de gestion de fichiers qu’on a mises en place (lire, écrire, modifier, supprimer), on a utilisé plusieurs principes de base de Rust :
 
