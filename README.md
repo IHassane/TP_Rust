@@ -77,3 +77,20 @@ Ce que j’ai retenu
     match est très utile pour gérer plusieurs cas.
 
     L’itération avec .iter() et .enumerate() est pratique pour les collections.
+
+
+9. Gestion de fichiers — principes appliqués
+
+Dans les méthodes de gestion de fichiers qu’on a mises en place (lire, écrire, modifier, supprimer, etc.), on a utilisé plusieurs principes de base de Rust :
+
+    Ownership & Borrowing : on passe des références (&self, &str) pour éviter de déplacer les valeurs, surtout dans les méthodes impl. Ça garantit qu’on garde le contrôle sur les données.
+
+    Match : utilisé pour gérer les erreurs proprement, par exemple lors de l’ouverture d’un fichier avec match File::open(...). On traite les cas Ok et Err sans crasher le programme.
+
+    Struct et impl : on a défini une struct Fichier avec un champ nom, et on a regroupé toutes les méthodes liées dans un bloc impl. Ça rend le code propre et organisé.
+
+    Lecture/écriture : pour lire, on a utilisé BufReader et .lines(). Pour écrire, OpenOptions permet d’ouvrir ou créer un fichier, en mode append ou overwrite.
+
+    Boucles et contrôle de flux : dans modifier_fichier, on utilise une boucle pour parcourir chaque ligne, demander à l'utilisateur s'il veut la changer, et on construit un nouveau contenu.
+
+    Chemin dynamique : on a demandé le nom du fichier à l’utilisateur et ajouté .txt dynamiquement avec format!, ce qui montre l’usage de String.
