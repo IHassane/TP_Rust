@@ -81,7 +81,7 @@ Ce que j’ai retenu
 
 9. Gestion de fichiers — principes appliqués
 
-Dans les méthodes de gestion de fichiers qu’on a mises en place (lire, écrire, modifier, supprimer, etc.), on a utilisé plusieurs principes de base de Rust :
+Dans les méthodes de gestion de fichiers qu’on a mises en place (lire, écrire, modifier, supprimer), on a utilisé plusieurs principes de base de Rust :
 
     Ownership & Borrowing : on passe des références (&self, &str) pour éviter de déplacer les valeurs, surtout dans les méthodes impl. Ça garantit qu’on garde le contrôle sur les données.
 
