@@ -1,20 +1,5 @@
-[2025-07-24 15:15:30] GET / HTTP/1.1
-[2025-07-24 15:15:30] Host: 127.0.0.1:8080
-[2025-07-24 15:15:30] User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0
-[2025-07-24 15:15:30] Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-[2025-07-24 15:15:30] Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
-[2025-07-24 15:15:30] Accept-Encoding: gzip, deflate, br, zstd
-[2025-07-24 15:15:30] Connection: keep-alive
-[2025-07-24 15:15:30] Upgrade-Insecure-Requests: 1
-[2025-07-24 15:15:30] Sec-Fetch-Dest: document
-[2025-07-24 15:15:30] Sec-Fetch-Mode: navigate
-[2025-07-24 15:15:30] Sec-Fetch-Site: none
-[2025-07-24 15:15:30] Sec-Fetch-User: ?1
-[2025-07-24 15:15:30] Priority: u=0, i
-[2025-07-24 15:15:30] 
-[2025-07-24 15:20:37] salut
-[2025-07-24 15:20:41] je suis un message 
-[2025-07-24 15:27:07] salur je suis thomas le goat 
-[2025-07-24 15:50:18] je suis un message de log
-[2025-07-24 17:35:21] test user 1
-[2025-07-24 17:36:50] test 2 
+
+[2025-07-24 18:33:58] test
+[2025-07-24 18:34:21] message de log
+[2025-07-25 09:51:59] test log 2025
+[2025-07-25 09:52:09] test utilisateur 2 

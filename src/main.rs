@@ -1,5 +1,3 @@
-use crate::asynchrone::attendre_message;
-
 mod compteBancaire;
 mod tp0;
 mod tp1;
@@ -9,6 +7,7 @@ mod tp3;
 mod fichier;
 mod asynchrone;
 mod tp4;
+mod tp7;
 
 #[tokio::main]
 async fn main() {
@@ -21,5 +20,6 @@ async fn main() {
     //asynchrone :: affichermessage().await;
     //asynchrone :: afficher_messages_en_parallele().await;
     //asynchrone :: afficher_sequentiellement().await;
-    tp4 :: journalisation().await;
+    //tp4 :: journalisation().await;
+    tp7 :: dns().await;
 }
