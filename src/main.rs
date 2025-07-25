@@ -9,6 +9,7 @@ mod asynchrone;
 mod tp4;
 mod tp7;
 mod tp8;
+mod tp9;
 
 #[tokio::main]
 async fn main() {
@@ -23,5 +24,6 @@ async fn main() {
     //asynchrone :: afficher_sequentiellement().await;
     //tp4 :: journalisation().await;
     //tp7 :: dns().await;
-    tp8 :: protocole().await;
+    //tp8 :: protocole().await;
+    tp9 :: websocket().await;
 }
