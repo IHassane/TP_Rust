@@ -8,6 +8,7 @@ mod fichier;
 mod asynchrone;
 mod tp4;
 mod tp7;
+mod tp8;
 
 #[tokio::main]
 async fn main() {
@@ -21,5 +22,6 @@ async fn main() {
     //asynchrone :: afficher_messages_en_parallele().await;
     //asynchrone :: afficher_sequentiellement().await;
     //tp4 :: journalisation().await;
-    tp7 :: dns().await;
+    //tp7 :: dns().await;
+    tp8 :: protocole().await;
 }
