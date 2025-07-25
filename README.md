@@ -124,3 +124,92 @@ Exemple de log :
 
 [2025-07-24 15:20:37] salut
 [2025-07-24 15:20:41] je suis un message 
+
+TP7. Client et Serveur DNS Simples
+
+Dans ce TP, on a implémenté un client capable de formuler des requêtes DNS en UDP et un serveur répondant à quelques noms prédéfinis.
+Concepts abordés :
+
+    UdpSocket avec Tokio pour envoyer/recevoir des paquets.
+
+    Sérialisation manuelle d’une requête DNS au format RFC 1035.
+
+    Analyse binaire (parsing) d’une réponse DNS.
+
+    Protocole DNS simplifié : en-tête, question, réponse (type A).
+
+Ce que j’ai appris :
+
+    À construire un message binaire à la main (header + question).
+
+    Comment fonctionne une résolution DNS basique (client → serveur).
+
+    Lire proprement une réponse DNS, en extrayant l’adresse IP.
+
+    L’importance du respect du format binaire attendu pour que ça fonctionne.
+
+Exemple :
+
+Client : test.local -> 127.0.0.1
+Serveur : réponse avec IP prédéfinie 192.168.1.100
+
+TP8. Chat TCP structuré avec protocoles
+
+Ce TP nous a fait structurer un système de chat textuel TCP entre plusieurs clients, avec un protocole personnalisé (REGISTER, LIST, SEND, DISCONNECT).
+Concepts appliqués :
+
+    TcpListener pour accepter des connexions entrantes.
+
+    tokio::spawn pour gérer plusieurs clients en parallèle.
+
+    Struct Message (enum) représentant les types d’échanges.
+
+    Partage d’état global (liste des utilisateurs connectés) avec Arc<Mutex<>>.
+
+    Sérialisation personnalisée : to_string() et from_str() pour notre protocole.
+
+Ce que j’ai appris :
+
+    À concevoir un mini-protocole réseau textuel.
+
+    Comment utiliser les Channels, Arc et Mutex pour partager des données entre tâches.
+
+    Séparer le protocole (src/protocol.rs) de la logique réseau.
+
+Exemple de session :
+
+Client A → REGISTER Alice
+Serveur → Ok: Bienvenue Alice
+Client A → LIST
+Serveur → UserList: [Bob, Charlie]
+Client A → SEND Bob:Salut
+Serveur → Error: Utilisateur introuvable
+
+TP9. Serveur et Client WebSocket
+
+Ce TP explore les WebSockets avec tokio-tungstenite pour permettre une communication bidirectionnelle persistante, adaptée au temps réel.
+Concepts utilisés :
+
+    Handshake WebSocket via HTTP Upgrade.
+
+    Crates : tokio-tungstenite, futures_util, url.
+
+    Full-duplex : lecture/écriture simultanée via split() du WebSocketStream.
+
+    tokio::select pour gérer plusieurs flux d’entrée/sortie.
+
+    Connexion à ws://localhost:8080.
+
+Ce que j’ai appris :
+
+    Différence entre une simple connexion TCP et un WebSocket.
+
+    Comment écouter et répondre à des messages texte en temps réel.
+
+    Gérer plusieurs clients WebSocket avec une boucle principale.
+
+Exemple :
+
+Client A connecté
+→ Message : Salut
+← Réponse du serveur : [15:30:01] Alice: Salut
